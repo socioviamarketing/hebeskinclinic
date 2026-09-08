@@ -82,15 +82,41 @@
 </head>
 <body class="antialiased selection:bg-brand-200 selection:text-brand-900">
 
+    <!-- Floating Quick Contact Buttons (WhatsApp & Call) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/919953125367?text=Hello%20Hebe%20Clinic,%20I%20would%20like%20to%20enquire%20about%20a%20consultation." 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           aria-label="Chat on WhatsApp"
+           class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 group relative">
+            <i class="fa-brands fa-whatsapp text-3xl"></i>
+            <span class="absolute right-16 bg-gray-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md">
+                Chat on WhatsApp
+            </span>
+        </a>
+        <!-- Call Button -->
+        <a href="tel:+919953125367" 
+           aria-label="Call Hebe Clinic"
+           class="w-14 h-14 bg-brand-900 hover:bg-brand-800 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 group relative border border-brand-300">
+            <i class="fa-solid fa-phone text-xl"></i>
+            <span class="absolute right-16 bg-gray-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md">
+                Call 9953125367
+            </span>
+        </a>
+    </div>
+
     <!-- Top Announcement Bar -->
     <div class="bg-brand-900 text-brand-100 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex justify-between items-center max-w-7xl mx-auto rounded-b-lg">
         <div class="hidden sm:flex items-center space-x-4 mx-auto sm:mx-0">
-            <span><i class="fa-solid me-1.5 fa-location-dot text-brand-400"></i> Malviya Nagar & Chhatarpur, New Delhi</span>
+            <span><i class="fa-solid me-1.5 fa-location-dot text-brand-400"></i> Malviya Nagar & Chattarpur, New Delhi</span>
             <span>&bull;</span>
             <span><i class="fa-solid me-1.5 fa-user-doctor text-brand-400"></i> Doctor-Led Medical Aesthetics</span>
         </div>
         <div class="flex items-center space-x-4 mx-auto sm:mx-0">
-            <a href="tel:+919876543210" class="hover:text-brand-300 transition-colors"><i class="fa-solid fa-phone me-1"></i> +91 98765 43210</a>
+            <a href="tel:+919953125367" class="hover:text-brand-300 transition-colors"><i class="fa-solid fa-phone me-1"></i> +91 9953125367</a>
+            <span class="hidden sm:inline">&bull;</span>
+            <a href="https://wa.me/919953125367" target="_blank" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-whatsapp me-1 text-emerald-400"></i> WhatsApp</a>
             <span class="hidden sm:inline">&bull;</span>
             <button onclick="scrollToBooking()" class="underline hover:text-brand-300 font-semibold">Book Consultation</button>
         </div>
@@ -108,43 +134,63 @@
                          onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1NadNPEtyOAVQZ8VLIuHCh2xeiaXC55P5';" />
                 </a>
 
-                <!-- Desktop Menu -->
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-brand-900">
-                    <a href="#treatments" class="hover:text-brand-600 transition-colors">Treatments</a>
-                    <a href="#philosophy" class="hover:text-brand-600 transition-colors">Our Philosophy</a>
-                    <a href="#technology" class="hover:text-brand-600 transition-colors">Technology</a>
-                    <a href="#locations" class="hover:text-brand-600 transition-colors">Locations</a>
-                    <a href="#testimonials" class="hover:text-brand-600 transition-colors">Reviews</a>
-                </nav>
-
-                <!-- Actions -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="#locations" class="text-xs uppercase tracking-wider text-brand-700 font-semibold border border-brand-300 px-4 py-2.5 rounded-full hover:bg-brand-100 transition-all">
-                        <i class="fa-solid fa-map-pin me-1"></i> Clinics
-                    </a>
-                    <button onclick="scrollToBooking()" class="bg-brand-900 text-brand-50 hover:bg-brand-800 text-xs uppercase tracking-widest font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-sm hover:shadow-md">
+                <!-- Navigation Controls -->
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <button onclick="scrollToBooking()" class="hidden sm:inline-flex bg-brand-900 text-brand-50 hover:bg-brand-800 text-xs uppercase tracking-widest font-semibold px-5 py-2.5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md">
                         Book Appointment
                     </button>
-                </div>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden text-brand-900 p-2 focus:outline-none">
-                    <i class="fa-solid fa-bars text-2xl"></i>
-                </button>
+                    <!-- Single Universal Menu Button -->
+                    <button id="menuToggleBtn" onclick="toggleMenu()" aria-label="Toggle Navigation Menu" class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-brand-100 border border-brand-300 text-brand-900 hover:bg-brand-200 active:scale-95 transition-all shadow-sm focus:outline-none">
+                        <span class="text-xs uppercase font-bold tracking-wider">Menu</span>
+                        <i id="menuToggleIcon" class="fa-solid fa-bars text-sm"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Mobile Drawer Navigation -->
-        <div id="mobileMenu" class="hidden md:hidden bg-stonebg border-b border-brand-200 px-6 py-6 space-y-4">
-            <a href="#treatments" onclick="toggleMobileMenu()" class="block text-base font-medium text-brand-900 hover:text-brand-600">Treatments</a>
-            <a href="#philosophy" onclick="toggleMobileMenu()" class="block text-base font-medium text-brand-900 hover:text-brand-600">Our Philosophy</a>
-            <a href="#technology" onclick="toggleMobileMenu()" class="block text-base font-medium text-brand-900 hover:text-brand-600">Technology</a>
-            <a href="#locations" onclick="toggleMobileMenu()" class="block text-base font-medium text-brand-900 hover:text-brand-600">Locations & Map</a>
-            <a href="#testimonials" onclick="toggleMobileMenu()" class="block text-base font-medium text-brand-900 hover:text-brand-600">Patient Experiences</a>
-            <div class="pt-4 border-t border-brand-200 flex flex-col gap-3">
-                <button onclick="toggleMobileMenu(); scrollToBooking()" class="w-full bg-brand-900 text-white text-center py-3 rounded-xl font-semibold text-sm tracking-wider uppercase">
-                    Book Consultation
-                </button>
+        <!-- Universal Navigation Drawer / Dropdown Panel -->
+        <div id="navMenu" class="hidden bg-stonebg/98 backdrop-blur-md border-b border-brand-200 shadow-xl transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Navigation Section 1 -->
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-600 block mb-3">Explore Clinic</span>
+                    <ul class="space-y-3 text-sm font-medium text-brand-900">
+                        <li><a href="#treatments" onclick="toggleMenu(); filterCategory('all')" class="hover:text-brand-600 transition-colors flex items-center gap-2"><i class="fa-solid fa-sparkles text-brand-500 text-xs"></i> All Treatments & Facials</a></li>
+                        <li><a href="#philosophy" onclick="toggleMenu()" class="hover:text-brand-600 transition-colors flex items-center gap-2"><i class="fa-solid fa-microscope text-brand-500 text-xs"></i> Our Philosophy</a></li>
+                        <li><a href="#director-desk" onclick="toggleMenu()" class="hover:text-brand-600 transition-colors flex items-center gap-2"><i class="fa-solid fa-user-doctor text-brand-500 text-xs"></i> Director's Desk</a></li>
+                        <li><a href="#technology" onclick="toggleMenu()" class="hover:text-brand-600 transition-colors flex items-center gap-2"><i class="fa-solid fa-microchip text-brand-500 text-xs"></i> Technology & Equipment</a></li>
+                        <li><a href="#locations" onclick="toggleMenu()" class="hover:text-brand-600 transition-colors flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-500 text-xs"></i> Clinic Locations & Maps</a></li>
+                    </ul>
+                </div>
+
+                <!-- Navigation Section 2 -->
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-600 block mb-3">Popular Treatments</span>
+                    <ul class="space-y-3 text-xs font-medium text-stone-700">
+                        <li><a href="#treatments" onclick="toggleMenu(); filterCategory('antiaging')" class="hover:text-brand-900 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[9px] text-brand-500"></i> Wrinkles & HIFU Lift</a></li>
+                        <li><a href="#treatments" onclick="toggleMenu(); filterCategory('facials')" class="hover:text-brand-900 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[9px] text-brand-500"></i> Hydra & Carbon Laser Facials</a></li>
+                        <li><a href="#treatments" onclick="toggleMenu(); filterCategory('skin')" class="hover:text-brand-900 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[9px] text-brand-500"></i> Chemical Peels & Glow</a></li>
+                        <li><a href="#treatments" onclick="toggleMenu(); filterCategory('laser')" class="hover:text-brand-900 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[9px] text-brand-500"></i> Laser Hair Reduction</a></li>
+                        <li><a href="#treatments" onclick="toggleMenu(); filterCategory('laser')" class="hover:text-brand-900 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[9px] text-brand-500"></i> Hair Fall & PRP Restoration</a></li>
+                    </ul>
+                </div>
+
+                <!-- Navigation Section 3: Booking & Quick Contact -->
+                <div class="sm:col-span-2 md:col-span-1 bg-brand-100/60 p-5 rounded-2xl border border-brand-200 flex flex-col justify-between space-y-4">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-800 block mb-1">Direct Doctor Consultation</span>
+                        <p class="text-xs text-stone-600 font-light leading-relaxed">Book your slot at our Malviya Nagar or Chattarpur centers.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="toggleMenu(); scrollToBooking()" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-semibold text-xs py-3 rounded-xl uppercase tracking-wider transition-all text-center">
+                            Book Appointment Now
+                        </button>
+                        <a href="https://wa.me/919953125367" target="_blank" rel="noopener" class="w-full border border-emerald-500 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 font-semibold text-xs py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> WhatsApp Support
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -172,17 +218,17 @@
 
                     <!-- Quick Category Pills -->
                     <div class="pt-2 flex flex-wrap gap-2.5 justify-center lg:justify-start">
-                        <a href="#treatments" onclick="filterCategory('skin')" class="bg-white border border-brand-200 hover:border-brand-500 text-brand-900 text-xs font-medium px-4 py-2.5 rounded-full shadow-sm hover:shadow transition-all">
-                            ✨ Skin & Acne Care
+                        <a href="#treatments" onclick="filterCategory('facials')" class="bg-white border border-brand-200 hover:border-brand-500 text-brand-900 text-xs font-medium px-4 py-2.5 rounded-full shadow-sm hover:shadow transition-all">
+                            ✨ Hydra & Carbon Facials
                         </a>
-                        <a href="#treatments" onclick="filterCategory('hair')" class="bg-white border border-brand-200 hover:border-brand-500 text-brand-900 text-xs font-medium px-4 py-2.5 rounded-full shadow-sm hover:shadow transition-all">
-                            💆 Hair Restoration
+                        <a href="#treatments" onclick="filterCategory('antiaging')" class="bg-white border border-brand-200 hover:border-brand-500 text-brand-900 text-xs font-medium px-4 py-2.5 rounded-full shadow-sm hover:shadow transition-all">
+                            ⏳ HIFU & Wrinkle Treatment
+                        </a>
+                        <a href="#treatments" onclick="filterCategory('skin')" class="bg-white border border-brand-200 hover:border-brand-500 text-brand-900 text-xs font-medium px-4 py-2.5 rounded-full shadow-sm hover:shadow transition-all">
+                            🌿 Photo Facial & Chemical Peels
                         </a>
                         <a href="#treatments" onclick="filterCategory('laser')" class="bg-white border border-brand-200 hover:border-brand-500 text-brand-900 text-xs font-medium px-4 py-2.5 rounded-full shadow-sm hover:shadow transition-all">
-                            ⚡ Laser & Aesthetics
-                        </a>
-                        <a href="#treatments" onclick="filterCategory('body')" class="bg-white border border-brand-200 hover:border-brand-500 text-brand-900 text-xs font-medium px-4 py-2.5 rounded-full shadow-sm hover:shadow transition-all">
-                            🌿 Body Contouring
+                            ⚡ Laser Hair & Restoration
                         </a>
                     </div>
 
@@ -259,12 +305,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="text-center max-w-3xl mx-auto space-y-4">
-                <span class="text-xs uppercase tracking-[0.2em] font-semibold text-brand-600">Tailored Clinical Care</span>
+                <span class="text-xs uppercase tracking-[0.2em] font-semibold text-brand-600">Dermatologist-Led Aesthetic Care</span>
                 <h2 class="font-serif-heading text-3xl sm:text-4xl lg:text-5xl text-brand-900 font-normal">
-                    A Short List, Treated Seriously.
+                    Advanced Treatments & Clinical Facials
                 </h2>
                 <p class="text-stone-600 text-sm sm:text-base font-light">
-                    We do not offer generic, off-the-shelf spa packages. Every protocol is customized after thorough skin and hair analysis by a qualified dermatologist.
+                    From state-of-the-art HIFU skin lifting and Hydra Facials to medical chemical peels and wrinkle smoothing, every protocol is customized to your skin biology.
                 </p>
             </div>
 
@@ -274,163 +320,267 @@
                     <button onclick="filterCategory('all')" id="tab-all" class="category-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-brand-900 text-white shadow">
                         All Focus Areas
                     </button>
-                    <button onclick="filterCategory('skin')" id="tab-skin" class="category-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-stone-600 hover:text-brand-900 transition-all">
-                        Skin Care & Acne
+                    <button onclick="filterCategory('facials')" id="tab-facials" class="category-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-stone-600 hover:text-brand-900 transition-all">
+                        Hydra, Carbon & Photo Facials
                     </button>
-                    <button onclick="filterCategory('hair')" id="tab-hair" class="category-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-stone-600 hover:text-brand-900 transition-all">
-                        Hair Restoration
+                    <button onclick="filterCategory('antiaging')" id="tab-antiaging" class="category-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-stone-600 hover:text-brand-900 transition-all">
+                        HIFU & Wrinkle Treatment
+                    </button>
+                    <button onclick="filterCategory('skin')" id="tab-skin" class="category-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-stone-600 hover:text-brand-900 transition-all">
+                        Chemical Peels & Glow
                     </button>
                     <button onclick="filterCategory('laser')" id="tab-laser" class="category-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-stone-600 hover:text-brand-900 transition-all">
-                        Laser & Aesthetics
-                    </button>
-                    <button onclick="filterCategory('body')" id="tab-body" class="category-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-stone-600 hover:text-brand-900 transition-all">
-                        Body & Anti-Aging
+                        Laser Hair & Hair Restoration
                     </button>
                 </div>
             </div>
 
-            <!-- Treatments Grid -->
+            <!-- Treatments Grid with Specific Images -->
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Card 1: Laser Hair Reduction -->
-                <div class="treatment-card laser group bg-stonebg rounded-2xl p-8 border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between">
+                <!-- Card 1: Wrinkle & Worry Line Treatment -->
+                <div class="treatment-card antiaging group bg-stonebg rounded-2xl overflow-hidden border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between luxury-shadow-hover">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Wrinkles and Worry Lines Treatment" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/FAF8F6/1C1B1A?text=Wrinkle+Treatment';" />
+                            <span class="absolute top-3 left-3 bg-brand-900/90 text-brand-100 text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                                Anti-Aging
+                            </span>
                         </div>
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-brand-600 bg-brand-100/60 px-2.5 py-1 rounded-md">Laser & Aesthetics</span>
-                        <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mt-3 mb-2">Laser Hair Reduction</h3>
-                        <p class="text-stone-600 text-sm font-light leading-relaxed">
-                            Targeted beam technology engineered for Indian skin types. Less regrowth, calmed skin response, and zero risk of ingrown hair irritation.
-                        </p>
-                        <ul class="mt-4 space-y-2 text-xs text-stone-600">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Triple-wavelength US-FDA platform</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Integrated contact cooling system</li>
-                        </ul>
+                        <div class="p-6">
+                            <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mb-2">Wrinkle & Worry Line Treatment</h3>
+                            <p class="text-stone-600 text-xs font-light leading-relaxed">
+                                Soften forehead worry lines, crow's feet, and frown lines with precision neuromuscular relaxing techniques and fine line smoothing protocols.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-stone-600">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Natural expression preservation</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Targets forehead & glabella lines</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="pt-6 mt-6 border-t border-brand-200/60 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-brand-800">Custom sessions available</span>
+                    <div class="p-6 pt-0 border-t border-brand-200/40 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-brand-800">Doctor-performed</span>
+                        <button onclick="selectTreatmentAndBook('Wrinkles & Worry Line Treatment')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
+                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: HIFU (High-Intensity Focused Ultrasound) -->
+                <div class="treatment-card antiaging group bg-stonebg rounded-2xl overflow-hidden border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between luxury-shadow-hover">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" 
+                                 alt="HIFU Skin Tightening Treatment" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/FAF8F6/1C1B1A?text=HIFU+Lifting';" />
+                            <span class="absolute top-3 left-3 bg-brand-900/90 text-brand-100 text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                                Non-Surgical Facelift
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mb-2">HIFU Non-Surgical Lift</h3>
+                            <p class="text-stone-600 text-xs font-light leading-relaxed">
+                                High-Intensity Focused Ultrasound tightens deep structural SMAS layer for jawline definition, neck lifting, and overall skin firming without surgery.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-stone-600">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Zero downtime non-invasive lift</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Collagen boost for 6-12 months</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-brand-200/40 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-brand-800">Advanced Ultrasound</span>
+                        <button onclick="selectTreatmentAndBook('HIFU Skin Tightening')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
+                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Hydra Facial -->
+                <div class="treatment-card facials group bg-stonebg rounded-2xl overflow-hidden border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between luxury-shadow-hover">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Hydra Facial Glow Treatment" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/FAF8F6/1C1B1A?text=Hydra+Facial';" />
+                            <span class="absolute top-3 left-3 bg-brand-900/90 text-brand-100 text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                                Deep Hydration & Glow
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mb-2">Medical Hydra Facial</h3>
+                            <p class="text-stone-600 text-xs font-light leading-relaxed">
+                                Patented vortex fusion technology cleanses, exfoliates, extracts impurities, and hydrates with antioxidant & hyaluronic acid infusions.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-stone-600">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Instant glass-skin glow</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Blackhead & clogged pore removal</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-brand-200/40 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-brand-800">Instant Results</span>
+                        <button onclick="selectTreatmentAndBook('Hydra Facial')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
+                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4: Carbon Facial (Hollywood Laser Peel) -->
+                <div class="treatment-card facials group bg-stonebg rounded-2xl overflow-hidden border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between luxury-shadow-hover">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Carbon Facial Laser Treatment" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/FAF8F6/1C1B1A?text=Carbon+Facial';" />
+                            <span class="absolute top-3 left-3 bg-brand-900/90 text-brand-100 text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                                Pore Tightening & Radiance
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mb-2">Carbon Laser Facial</h3>
+                            <p class="text-stone-600 text-xs font-light leading-relaxed">
+                                Known as the "Hollywood Peel", activated liquid carbon is applied and blasted with Q-switched laser to shrink pores and oiliness.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-stone-600">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Minimizes enlarged pores & sebum</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Event-ready skin brightening</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-brand-200/40 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-brand-800">Laser Precision</span>
+                        <button onclick="selectTreatmentAndBook('Carbon Facial')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
+                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 5: Photo Facial (IPL Rejuvenation) -->
+                <div class="treatment-card facials group bg-stonebg rounded-2xl overflow-hidden border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between luxury-shadow-hover">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Photo Facial IPL Skin Rejuvenation" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/FAF8F6/1C1B1A?text=Photo+Facial';" />
+                            <span class="absolute top-3 left-3 bg-brand-900/90 text-brand-100 text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                                Tone Correction & Rosacea
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mb-2">IPL Photo Facial</h3>
+                            <p class="text-stone-600 text-xs font-light leading-relaxed">
+                                Intense Pulsed Light penetrates the dermis to target sun spots, redness, broken capillaries, and uneven pigmentation.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-stone-600">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Reduces redness & vascular lesions</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Fades stubborn sun spots & freckles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-brand-200/40 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-brand-800">Broad-Spectrum Light</span>
+                        <button onclick="selectTreatmentAndBook('Photo Facial')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
+                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 6: Chemical Peels -->
+                <div class="treatment-card skin group bg-stonebg rounded-2xl overflow-hidden border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between luxury-shadow-hover">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Medical Chemical Peels" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/FAF8F6/1C1B1A?text=Chemical+Peels';" />
+                            <span class="absolute top-3 left-3 bg-brand-900/90 text-brand-100 text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                                Resurfacing & Acne Care
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mb-2">Medical Chemical Peels</h3>
+                            <p class="text-stone-600 text-xs font-light leading-relaxed">
+                                Custom dermatological peels (Salicylic, Glycolic, Yellow Peels, TCA) formulated to treat active acne, melasma, and texture issues.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-stone-600">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Customized depth & acid formulation</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Treats post-acne marks & melasma</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-brand-200/40 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-brand-800">Dermatologist Prescribed</span>
+                        <button onclick="selectTreatmentAndBook('Chemical Peels')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
+                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 7: Laser Hair Reduction -->
+                <div class="treatment-card laser group bg-stonebg rounded-2xl overflow-hidden border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between luxury-shadow-hover">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Laser Hair Reduction Treatment" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/FAF8F6/1C1B1A?text=Laser+Hair+Reduction';" />
+                            <span class="absolute top-3 left-3 bg-brand-900/90 text-brand-100 text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                                Smooth & Hair-Free Skin
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mb-2">Laser Hair Reduction</h3>
+                            <p class="text-stone-600 text-xs font-light leading-relaxed">
+                                US-FDA approved triple-wavelength diode laser hair reduction safe for all Indian skin types with advanced cooling tech for comfortable sessions.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-stone-600">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Painless cooling contact crystal</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Permanent hair growth reduction</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-brand-200/40 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-brand-800">US-FDA Approved Tech</span>
                         <button onclick="selectTreatmentAndBook('Laser Hair Reduction')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
                             Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- Card 2: Acne & Acne Scars -->
-                <div class="treatment-card skin group bg-stonebg rounded-2xl p-8 border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between">
+                <!-- Card 8: Hair Fall & Restoration -->
+                <div class="treatment-card laser group bg-stonebg rounded-2xl overflow-hidden border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between luxury-shadow-hover">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-spa"></i>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Hair Fall and PRP Restoration" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/FAF8F6/1C1B1A?text=Hair+Restoration';" />
+                            <span class="absolute top-3 left-3 bg-brand-900/90 text-brand-100 text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                                Scalp & Follicle Revival
+                            </span>
                         </div>
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-brand-600 bg-brand-100/60 px-2.5 py-1 rounded-md">Skin Care</span>
-                        <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mt-3 mb-2">Acne & Acne Scars</h3>
-                        <p class="text-stone-600 text-sm font-light leading-relaxed">
-                            Active breakouts controlled first through medical management before restoring texture with subcision, microneedling RF, or targeted peels.
-                        </p>
-                        <ul class="mt-4 space-y-2 text-xs text-stone-600">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Root cause hormonal & lifestyle audit</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Scar remodeling protocols</li>
-                        </ul>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-brand-200/60 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-brand-800">Doctor consultation required</span>
-                        <button onclick="selectTreatmentAndBook('Acne & Acne Scars')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
-                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 3: Pigmentation & Melasma -->
-                <div class="treatment-card skin group bg-stonebg rounded-2xl p-8 border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-sun"></i>
+                        <div class="p-6">
+                            <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mb-2">Hair Fall & PRP Restoration</h3>
+                            <p class="text-stone-600 text-xs font-light leading-relaxed">
+                                Complete scalp trichoscopy diagnostics combined with high-density Growth Factor Therapy (GFC) and PRP to stop hair shedding and stimulate growth.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-stone-600">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Trichoscopy diagnostic evaluation</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Autologous Growth Factor (GFC/PRP)</li>
+                            </ul>
                         </div>
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-brand-600 bg-brand-100/60 px-2.5 py-1 rounded-md">Skin Care</span>
-                        <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mt-3 mb-2">Pigmentation & Melasma</h3>
-                        <p class="text-stone-600 text-sm font-light leading-relaxed">
-                            Achieve a radiant, even tone without pushing the skin barrier too hard. Gentle, layer-by-layer pigmentation breakdown protocols.
-                        </p>
-                        <ul class="mt-4 space-y-2 text-xs text-stone-600">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Melanin suppressant pre-care</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Laser Toning & Q-Switched Tech</li>
-                        </ul>
                     </div>
-                    <div class="pt-6 mt-6 border-t border-brand-200/60 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-brand-800">Safe for sensitive skin</span>
-                        <button onclick="selectTreatmentAndBook('Pigmentation & Melasma')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
-                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 4: Hair Fall & Restoration -->
-                <div class="treatment-card hair group bg-stonebg rounded-2xl p-8 border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-scissors"></i>
-                        </div>
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-brand-600 bg-brand-100/60 px-2.5 py-1 rounded-md">Hair Care</span>
-                        <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mt-3 mb-2">Hair Fall & Restoration</h3>
-                        <p class="text-stone-600 text-sm font-light leading-relaxed">
-                            We understand why hair shedding happens before prescribing treatments. Scalp trichoscopy followed by targeted growth factor therapy.
-                        </p>
-                        <ul class="mt-4 space-y-2 text-xs text-stone-600">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> High-density PRP / GFC Therapy</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Scalp Micro-Needling Boosters</li>
-                        </ul>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-brand-200/60 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-brand-800">Trichoscopy Included</span>
+                    <div class="p-6 pt-0 border-t border-brand-200/40 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-brand-800">Follicle Stimulating</span>
                         <button onclick="selectTreatmentAndBook('Hair Fall & Restoration')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
-                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 5: Anti-Aging & Anti-Wrinkle -->
-                <div class="treatment-card body group bg-stonebg rounded-2xl p-8 border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-hourglass-half"></i>
-                        </div>
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-brand-600 bg-brand-100/60 px-2.5 py-1 rounded-md">Anti-Aging</span>
-                        <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mt-3 mb-2">Anti-Aging & Rejuvenation</h3>
-                        <p class="text-stone-600 text-sm font-light leading-relaxed">
-                            Subtle, natural-looking enhancements that preserve your unique facial contours while restoring firmness and elasticity.
-                        </p>
-                        <ul class="mt-4 space-y-2 text-xs text-stone-600">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> HIFU & RF Skin Tightening</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Dermal Fillers & Hydration Boosters</li>
-                        </ul>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-brand-200/60 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-brand-800">Natural Expression First</span>
-                        <button onclick="selectTreatmentAndBook('Anti-Aging & Rejuvenation')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
-                            Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 6: Body Sculpting & Contouring -->
-                <div class="treatment-card body group bg-stonebg rounded-2xl p-8 border border-brand-100 hover:border-brand-300 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-child-reaching"></i>
-                        </div>
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-brand-600 bg-brand-100/60 px-2.5 py-1 rounded-md">Body Care</span>
-                        <h3 class="font-serif-heading text-2xl font-normal text-brand-900 mt-3 mb-2">Body Sculpting & Toning</h3>
-                        <p class="text-stone-600 text-sm font-light leading-relaxed">
-                            Non-invasive body contouring treatments targeting stubborn pockets, cellulite reduction, and stretch mark refinement.
-                        </p>
-                        <ul class="mt-4 space-y-2 text-xs text-stone-600">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Non-surgical contouring</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Stretch mark reduction protocols</li>
-                        </ul>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-brand-200/60 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-brand-800">Zero downtime</span>
-                        <button onclick="selectTreatmentAndBook('Body Sculpting & Toning')" class="text-xs uppercase font-bold text-brand-900 group-hover:text-brand-600 flex items-center gap-1">
                             Book <i class="fa-solid fa-chevron-right text-[10px]"></i>
                         </button>
                     </div>
@@ -460,11 +610,11 @@
                     
                     <div class="pt-4 flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full bg-brand-700/60 border border-brand-500 flex items-center justify-center font-serif-heading text-xl text-brand-200">
-                            H
+                            N
                         </div>
                         <div>
-                            <div class="text-sm font-semibold text-brand-100">Dermatologist & Medical Director</div>
-                            <div class="text-xs text-brand-300">Hebe Skin, Hair & Laser Clinic</div>
+                            <div class="text-sm font-semibold text-brand-100">Dr. M. Nessa</div>
+                            <div class="text-xs text-brand-300">Director, Hebe Skin Hair Laser Clinic</div>
                         </div>
                     </div>
                 </div>
@@ -502,6 +652,84 @@
                             Detailed post-procedure guidance, ongoing check-ins, and barrier maintenance routines.
                         </p>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Director's Desk Section -->
+    <section id="director-desk" class="py-20 lg:py-28 bg-stonebg border-b border-brand-200/60 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-brand-200/80 luxury-shadow relative">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Director Profile Card -->
+                    <div class="lg:col-span-4 flex flex-col items-center text-center lg:border-e border-brand-200/60 lg:pe-10">
+                        <div class="relative mb-6">
+                            <div class="w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-brand-100 p-1.5 shadow-md border-2 border-brand-300/80 overflow-hidden">
+                                <img src="https://lh3.googleusercontent.com/d/1vvB1VIPE2GcqqRVKpTtFiWtv2zZXTw6Q" 
+                                     alt="Dr. M. Nessa - Director, Hebe Skin Hair Laser Clinic" 
+                                     class="w-full h-full object-cover object-center rounded-full"
+                                     onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1vvB1VIPE2GcqqRVKpTtFiWtv2zZXTw6Q';" />
+                            </div>
+                            <div class="absolute -bottom-2 right-2 bg-brand-900 text-brand-100 p-2.5 rounded-full shadow-md" title="Doctor Led">
+                                <i class="fa-solid fa-user-doctor text-base"></i>
+                            </div>
+                        </div>
+
+                        <h3 class="font-serif-heading text-2xl sm:text-3xl text-brand-900 font-bold">Dr. M. Nessa</h3>
+                        <p class="text-xs uppercase tracking-widest text-brand-600 font-semibold mt-1">Director</p>
+                        <p class="text-xs text-stone-500 mt-0.5 font-medium">Hebe Skin Hair Laser Clinic</p>
+
+                        <div class="mt-6 pt-6 border-t border-brand-100 w-full space-y-2">
+                            <div class="inline-flex items-center gap-2 bg-brand-50 text-brand-800 text-[11px] font-medium px-3.5 py-1.5 rounded-full border border-brand-200/80 w-full justify-center">
+                                <i class="fa-solid fa-location-dot text-brand-600"></i> Malviya Nagar &bull; Chattarpur
+                            </div>
+                            <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-900 text-[11px] font-medium px-3.5 py-1.5 rounded-full border border-amber-200/80 w-full justify-center">
+                                <i class="fa-solid fa-rocket text-amber-600"></i> Expanding to Gurgaon & Jaipur
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Director Message -->
+                    <div class="lg:col-span-8 space-y-6 text-stone-700 leading-relaxed font-light text-sm sm:text-base">
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-[0.25em] font-semibold text-brand-600">Leadership Vision</span>
+                            <h2 class="font-serif-heading text-3xl sm:text-4xl lg:text-5xl text-brand-900 font-normal leading-tight">
+                                Director's Desk
+                            </h2>
+                        </div>
+
+                        <p class="text-stone-800 text-base sm:text-lg font-light leading-relaxed border-s-2 border-brand-500 ps-4 py-1">
+                            At Hebe Skin Hair Laser Clinic, our vision has always been simple — to help you look and feel your most confident self through advanced aesthetic care, timeless beauty, and youthful vitality. As Director of this clinic, I take pride in leading a team devoted to the art and science of modern skin and hair rejuvenation.
+                        </p>
+
+                        <p>
+                            With our presence in Malviya Nagar and Chattarpur, New Delhi — and soon expanding to Gurgaon and Jaipur — Hebe was built on the belief that world-class aesthetic care should be accessible, honest, and transformative. Our focus goes beyond routine treatments; we specialize in advanced anti-aging solutions, skin rejuvenation, and beauty-enhancing procedures designed to help you age gracefully and radiantly. From dermal fillers, skin boosters, and PRP to laser hair removal, HydraFacials, and pigmentation correction, every treatment is curated with precision, artistry, and an eye for natural, lasting results.
+                        </p>
+
+                        <p>
+                            Every day, I am reminded that true beauty is about more than appearance — it's about the confidence that comes from feeling renewed, refreshed, and truly cared for. Anti-aging is not just a treatment category for us; it's a philosophy of helping you look as vibrant as you feel, at every stage of life.
+                        </p>
+
+                        <p class="font-normal text-stone-800">
+                            As we grow across Delhi NCR and into Jaipur, our commitment remains the same — bringing you science-backed aesthetics with a personal touch, so you can put your best face forward, always.
+                        </p>
+
+                        <!-- Signature Block -->
+                        <div class="pt-6 border-t border-brand-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div>
+                                <span class="font-serif-heading text-2xl text-brand-900 font-bold block">Dr. M. Nessa</span>
+                                <span class="text-xs text-brand-700 font-semibold tracking-wider uppercase">Director, Hebe Skin Hair Laser Clinic</span>
+                            </div>
+                            <button onclick="scrollToBooking()" class="bg-brand-900 hover:bg-brand-800 text-white text-xs uppercase tracking-wider font-semibold px-6 py-3.5 rounded-xl transition-all shadow-sm">
+                                Book Consultation
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -579,25 +807,26 @@
                     </h2>
                 </div>
                 <p class="text-stone-600 text-xs sm:text-sm max-w-md font-light">
-                    Visit our state-of-the-art dermatology clinics in Delhi. Easy parking, discreet ambiance, and full diagnostic facilities at both centers.
+                    Visit our state-of-the-art dermatology clinics in Delhi. Dedicated parking, doctor consultation rooms, and full laser suites.
                 </p>
             </div>
 
             <!-- Locations Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
-                <!-- Location 1: Malviya Nagar -->
+                <!-- Location 1: Chattarpur -->
                 <div class="bg-stonebg rounded-2xl p-8 border border-brand-200 hover:border-brand-400 transition-all luxury-shadow flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="bg-brand-900 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Primary Center</span>
+                            <span class="bg-brand-900 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Chattarpur Center</span>
                             <span class="text-emerald-700 text-xs font-medium flex items-center gap-1">
                                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Open Today
                             </span>
                         </div>
-                        <h3 class="font-serif-heading text-2xl text-brand-900 font-semibold mb-2">Malviya Nagar Clinic</h3>
-                        <p class="text-stone-600 text-xs font-light mb-6">
-                            Main Road, Near Malviya Nagar Metro Station (Yellow Line), New Delhi - 110017
+                        <h3 class="font-serif-heading text-2xl text-brand-900 font-semibold mb-2">Hebe Skin Hair Laser Clinic</h3>
+                        <p class="text-stone-700 text-xs leading-relaxed font-normal mb-6">
+                            <i class="fa-solid fa-location-dot text-brand-600 me-1"></i>
+                            <strong>D41/806, Upper Ground Floor</strong>, 100 Feet Road, near JMD Building, Chattarpur, New Delhi - 110074
                         </p>
                         
                         <div class="space-y-3 border-t border-brand-200/60 pt-4 text-xs text-stone-700">
@@ -607,11 +836,93 @@
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fa-solid fa-phone text-brand-600 w-4"></i>
-                                <span>+91 98765 43210</span>
+                                <a href="tel:+919953125367" class="font-semibold text-brand-900 hover:underline">+91 9953125367</a>
                             </div>
                             <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-square-parking text-brand-600 w-4"></i>
-                                <span>Valet & On-Site Parking Available</span>
+                                <i class="fa-brands fa-whatsapp text-emerald-600 w-4 text-sm"></i>
+                                <a href="https://wa.me/919953125367" target="_blank" class="text-emerald-700 hover:underline font-medium">Chat on WhatsApp (+91 9953125367)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 flex gap-3">
+                        <button onclick="scrollToBooking('Chattarpur')" class="flex-1 bg-brand-900 text-white text-xs font-semibold py-3 rounded-xl uppercase tracking-wider hover:bg-brand-800 transition-all text-center">
+                            Book Here
+                        </button>
+                        <a href="https://maps.google.com/?q=D41/806+100+feet+road+Chattarpur+New+Delhi" target="_blank" rel="noopener" class="border border-brand-300 text-brand-900 px-4 py-3 rounded-xl text-xs font-medium hover:bg-brand-100 transition-all flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-location-arrow"></i> Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Location 2: Malviya Nagar -->
+                <div class="bg-stonebg rounded-2xl p-8 border border-brand-200 hover:border-brand-400 transition-all luxury-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-brand-900 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Malviya Nagar Center</span>
+                            <span class="text-emerald-700 text-xs font-medium flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Open Today
+                            </span>
+                        </div>
+                        <h3 class="font-serif-heading text-2xl text-brand-900 font-semibold mb-2">Hebe Skin Hair Laser Clinic</h3>
+                        <p class="text-stone-700 text-xs leading-relaxed font-normal mb-6">
+                            <i class="fa-solid fa-location-dot text-brand-600 me-1"></i>
+                            <strong>90/59</strong>, Behind ITI Main Market, Malviya Nagar, Delhi, India - 110017
+                        </p>
+                        
+                        <div class="space-y-3 border-t border-brand-200/60 pt-4 text-xs text-stone-700">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-clock text-brand-600 w-4"></i>
+                                <span>Mon - Sat: 10:00 AM - 7:30 PM</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-phone text-brand-600 w-4"></i>
+                                <a href="tel:+919953125367" class="font-semibold text-brand-900 hover:underline">+91 9953125367</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-emerald-600 w-4 text-sm"></i>
+                                <a href="https://wa.me/919953125367" target="_blank" class="text-emerald-700 hover:underline font-medium">Chat on WhatsApp (+91 9953125367)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 flex gap-3">
+                        <button onclick="scrollToBooking('Chattarpur')" class="flex-1 bg-brand-900 text-white text-xs font-semibold py-3 rounded-xl uppercase tracking-wider hover:bg-brand-800 transition-all text-center">
+                            Book Here
+                        </button>
+                        <a href="https://maps.google.com/?q=D41/806+100+feet+road+Chattarpur+New+Delhi" target="_blank" rel="noopener" class="border border-brand-300 text-brand-900 px-4 py-3 rounded-xl text-xs font-medium hover:bg-brand-100 transition-all flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-location-arrow"></i> Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Location 2: Malviya Nagar -->
+                <div class="bg-stonebg rounded-2xl p-8 border border-brand-200 hover:border-brand-400 transition-all luxury-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-brand-900 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Malviya Nagar Center</span>
+                            <span class="text-emerald-700 text-xs font-medium flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Open Today
+                            </span>
+                        </div>
+                        <h3 class="font-serif-heading text-2xl text-brand-900 font-semibold mb-2">Hebe Skin Hair Laser Clinic</h3>
+                        <p class="text-stone-700 text-xs leading-relaxed font-normal mb-6">
+                            <i class="fa-solid fa-location-dot text-brand-600 me-1"></i>
+                            <strong>90/59</strong>, Behind ITI Main Market, Malviya Nagar, Delhi, India - 110017
+                        </p>
+                        
+                        <div class="space-y-3 border-t border-brand-200/60 pt-4 text-xs text-stone-700">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-clock text-brand-600 w-4"></i>
+                                <span>Mon - Sat: 10:00 AM - 7:30 PM</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-phone text-brand-600 w-4"></i>
+                                <a href="tel:+917303705544" class="font-semibold text-brand-900 hover:underline">+91 7303705544</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-emerald-600 w-4 text-sm"></i>
+                                <a href="https://wa.me/919953125367" target="_blank" class="text-emerald-700 hover:underline font-medium">Chat on WhatsApp (+91 9953125367)</a>
                             </div>
                         </div>
                     </div>
@@ -620,76 +931,146 @@
                         <button onclick="scrollToBooking('Malviya Nagar')" class="flex-1 bg-brand-900 text-white text-xs font-semibold py-3 rounded-xl uppercase tracking-wider hover:bg-brand-800 transition-all text-center">
                             Book Here
                         </button>
-                        <a href="https://maps.google.com/?q=Malviya+Nagar+Delhi" target="_blank" rel="noopener" class="border border-brand-300 text-brand-900 px-4 py-3 rounded-xl text-xs font-medium hover:bg-brand-100 transition-all flex items-center justify-center gap-1">
+                        <a href="https://maps.google.com/?q=90/59+behind+ITI+main+market+Malviya+Nagar+Delhi" target="_blank" rel="noopener" class="border border-brand-300 text-brand-900 px-4 py-3 rounded-xl text-xs font-medium hover:bg-brand-100 transition-all flex items-center justify-center gap-1">
                             <i class="fa-solid fa-location-arrow"></i> Maps
                         </a>
                     </div>
                 </div>
 
-                <!-- Location 2: Chhatarpur -->
-                <div class="bg-stonebg rounded-2xl p-8 border border-brand-200 hover:border-brand-400 transition-all luxury-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-brand-200 text-brand-900 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">South Delhi Center</span>
-                            <span class="text-emerald-700 text-xs font-medium flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Open Today
-                            </span>
-                        </div>
-                        <h3 class="font-serif-heading text-2xl text-brand-900 font-semibold mb-2">Chhatarpur Clinic</h3>
-                        <p class="text-stone-600 text-xs font-light mb-6">
-                            Main Chhatarpur Temple Road, Near Chhatarpur Metro Station, New Delhi - 110074
-                        </p>
-                        
-                        <div class="space-y-3 border-t border-brand-200/60 pt-4 text-xs text-stone-700">
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-clock text-brand-600 w-4"></i>
-                                <span>Mon - Sat: 10:30 AM - 8:00 PM</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-phone text-brand-600 w-4"></i>
-                                <span>+91 98765 43211</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-square-parking text-brand-600 w-4"></i>
-                                <span>Dedicated Client Parking Space</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 pt-4 flex gap-3">
-                        <button onclick="scrollToBooking('Chhatarpur')" class="flex-1 bg-brand-900 text-white text-xs font-semibold py-3 rounded-xl uppercase tracking-wider hover:bg-brand-800 transition-all text-center">
-                            Book Here
-                        </button>
-                        <a href="https://maps.google.com/?q=Chhatarpur+Delhi" target="_blank" rel="noopener" class="border border-brand-300 text-brand-900 px-4 py-3 rounded-xl text-xs font-medium hover:bg-brand-100 transition-all flex items-center justify-center gap-1">
-                            <i class="fa-solid fa-location-arrow"></i> Maps
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Location 3: Gurgaon (Upcoming) -->
+                <!-- Location 3: Gurgaon & Jaipur (Upcoming Clinics) -->
                 <div class="bg-brand-50/50 rounded-2xl p-8 border border-dashed border-brand-300 flex flex-col justify-between relative overflow-hidden">
                     <div class="absolute top-4 right-4">
-                        <span class="bg-brand-200 text-brand-800 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Expansion</span>
+                        <span class="bg-amber-200 text-amber-900 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Coming Soon</span>
                     </div>
 
                     <div>
                         <div class="w-10 h-10 rounded-full bg-brand-200/60 text-brand-700 flex items-center justify-center text-lg mb-4">
                             <i class="fa-solid fa-building-user"></i>
                         </div>
-                        <h3 class="font-serif-heading text-2xl text-brand-900 font-semibold mb-2">Gurgaon Clinic</h3>
-                        <p class="text-stone-500 text-xs font-light mb-6">
-                            Golf Course Road / Cyber City Corridor, Gurgaon (NCR)
+                        <h3 class="font-serif-heading text-2xl text-brand-900 font-semibold mb-2">Upcoming Clinics</h3>
+                        <p class="text-stone-600 text-xs font-medium mb-4">
+                            Gurgaon & Jaipur Expansion
                         </p>
                         
-                        <div class="bg-white p-4 rounded-xl border border-brand-200/80 mb-4">
-                            <p class="text-xs font-semibold text-brand-900">Opening Soon</p>
-                            <p class="text-[11px] text-stone-500 mt-0.5">Register early interest to receive priority consultation slot during opening week.</p>
+                        <div class="bg-white p-4 rounded-xl border border-brand-200/80 mb-4 space-y-2 text-xs">
+                            <div class="flex items-center gap-2 font-semibold text-brand-900">
+                                <i class="fa-solid fa-city text-brand-600"></i> Gurgaon (NCR) & Jaipur
+                            </div>
+                            <p class="text-[11px] text-stone-500 font-light leading-relaxed">
+                                We are expanding to Gurgaon and Jaipur to bring evidence-based dermatology care closer to you.
+                            </p>
                         </div>
                     </div>
 
-                    <button onclick="scrollToBooking('Gurgaon Pre-Booking')" class="w-full border border-brand-400 text-brand-900 text-xs font-semibold py-3 rounded-xl uppercase tracking-wider hover:bg-brand-100 transition-all">
-                        Register Early Interest
+                    <a href="https://wa.me/919953125367?text=Hi%20Hebe%20Clinic,%20I%20am%20interested%20in%20updates%20for%20Gurgaon/Jaipur%20clinic" target="_blank" class="w-full border border-brand-400 text-brand-900 text-xs font-semibold py-3 rounded-xl uppercase tracking-wider hover:bg-brand-100 transition-all text-center block">
+                        <i class="fa-brands fa-whatsapp text-emerald-600 me-1"></i> Register Pre-Launch Interest
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation / Appointment Booking Section -->
+    <section id="booking" class="py-20 bg-stonebg border-t border-brand-200/60">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-brand-200 luxury-shadow">
+                <div class="text-center space-y-3 mb-10">
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-brand-600">Seamless Appointment</span>
+                    <h2 class="font-serif-heading text-3xl sm:text-4xl text-brand-900 font-normal">
+                        Book Your Doctor Consultation
+                    </h2>
+                    <p class="text-stone-600 text-xs sm:text-sm font-light">
+                        Select your preferred location (Malviya Nagar or Chattarpur) and treatment.
+                    </p>
+                </div>
+
+                <form id="consultationForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Patient Name -->
+                        <div>
+                            <label for="patientName" class="block text-xs uppercase tracking-wider font-semibold text-brand-900 mb-2">Full Name *</label>
+                            <input type="text" id="patientName" required placeholder="Enter your full name" class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3 text-xs sm:text-sm text-stone-800 focus:outline-none focus:border-brand-600 transition-colors">
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div>
+                            <label for="patientPhone" class="block text-xs uppercase tracking-wider font-semibold text-brand-900 mb-2">Phone Number *</label>
+                            <input type="tel" id="patientPhone" required placeholder="10-digit mobile number" class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3 text-xs sm:text-sm text-stone-800 focus:outline-none focus:border-brand-600 transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Clinic Location Dropdown: RESTRICTED TO MALVIYA NAGAR AND CHATTARPUR ONLY -->
+                        <div>
+                            <label for="clinicLocation" class="block text-xs uppercase tracking-wider font-semibold text-brand-900 mb-2">Preferred Clinic Location *</label>
+                            <select id="clinicLocation" required class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3 text-xs sm:text-sm text-stone-800 focus:outline-none focus:border-brand-600 transition-colors">
+                                <option value="" disabled selected>Select Clinic Location</option>
+                                <option value="Malviya Nagar">Malviya Nagar Clinic (90/59 Behind ITI Market)</option>
+                                <option value="Chattarpur">Chattarpur Clinic (D41/806 100ft Road)</option>
+                            </select>
+                        </div>
+
+                        <!-- Treatment Selection Dropdown -->
+                        <div>
+                            <label for="treatmentType" class="block text-xs uppercase tracking-wider font-semibold text-brand-900 mb-2">Treatment of Interest *</label>
+                            <select id="treatmentType" required class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3 text-xs sm:text-sm text-stone-800 focus:outline-none focus:border-brand-600 transition-colors">
+                                <option value="" disabled selected>Select Treatment</option>
+                                <option value="Wrinkles & Worry Line Treatment">Wrinkles & Worry Line Treatment</option>
+                                <option value="HIFU Skin Tightening">HIFU Non-Surgical Lift</option>
+                                <option value="Hydra Facial">Hydra Facial Glow</option>
+                                <option value="Carbon Facial">Carbon Laser Facial</option>
+                                <option value="Photo Facial">Photo Facial (IPL Rejuvenation)</option>
+                                <option value="Chemical Peels">Medical Chemical Peels</option>
+                                <option value="Laser Hair Reduction">Laser Hair Reduction</option>
+                                <option value="Hair Fall & Restoration">Hair Fall & PRP Restoration</option>
+                                <option value="General Consultation">General Skin / Hair Consultation</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Preferred Date -->
+                        <div>
+                            <label for="preferredDate" class="block text-xs uppercase tracking-wider font-semibold text-brand-900 mb-2">Preferred Date *</label>
+                            <input type="date" id="preferredDate" required class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3 text-xs sm:text-sm text-stone-800 focus:outline-none focus:border-brand-600 transition-colors">
+                        </div>
+
+                        <!-- Preferred Time Slot -->
+                        <div>
+                            <label for="preferredTime" class="block text-xs uppercase tracking-wider font-semibold text-brand-900 mb-2">Preferred Time Slot *</label>
+                            <select id="preferredTime" required class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3 text-xs sm:text-sm text-stone-800 focus:outline-none focus:border-brand-600 transition-colors">
+                                <option value="" disabled selected>Select Time Slot</option>
+                                <option value="Morning (10:00 AM - 1:00 PM)">Morning (10:00 AM - 1:00 PM)</option>
+                                <option value="Afternoon (1:00 PM - 4:00 PM)">Afternoon (1:00 PM - 4:00 PM)</option>
+                                <option value="Evening (4:00 PM - 7:30 PM)">Evening (4:00 PM - 7:30 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-semibold text-xs sm:text-sm py-4 rounded-xl uppercase tracking-widest transition-all duration-300 shadow-md">
+                        Confirm Appointment Request
                     </button>
+                </form>
+
+                <!-- Booking Confirmation Message -->
+                <div id="bookingConfirmation" class="hidden text-center py-10 space-y-4">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-2xl">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="font-serif-heading text-3xl text-brand-900">Consultation Request Received</h3>
+                    <p class="text-stone-600 text-sm max-w-md mx-auto font-light">
+                        Thank you, <span id="confirmName" class="font-semibold text-brand-900"></span>. Our clinical team at <span id="confirmLocation" class="font-semibold text-brand-900"></span> will contact you shortly on your provided mobile number to confirm your schedule.
+                    </p>
+                    <div class="pt-4 flex justify-center gap-4">
+                        <button onclick="resetBookingForm()" class="border border-brand-300 text-brand-900 text-xs font-semibold px-6 py-2.5 rounded-xl uppercase tracking-wider hover:bg-brand-50">
+                            Book Another
+                        </button>
+                        <a href="https://wa.me/919953125367" target="_blank" class="bg-emerald-600 text-white text-xs font-semibold px-6 py-2.5 rounded-xl uppercase tracking-wider hover:bg-emerald-700 flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp"></i> Confirm on WhatsApp
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -697,239 +1078,82 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-brand-50 border-t border-brand-200/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-xs uppercase tracking-[0.2em] font-semibold text-brand-600">Patient Voices</span>
-                <h2 class="font-serif-heading text-3xl sm:text-4xl text-brand-900 font-normal">
-                    Experiences That Speak For Themselves.
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Review 1 -->
-                <div class="bg-white p-8 rounded-2xl border border-brand-200/80 luxury-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 text-xs mb-4">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-stone-700 text-xs sm:text-sm font-light italic leading-relaxed mb-6">
-                            "I had been treating pigmentation on my own for years with store creams. The difference here was being told why it kept coming back, and being given something I could actually follow."
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-brand-100 flex items-center justify-between">
-                        <div>
-                            <div class="text-xs font-semibold text-brand-900">S. Sharma</div>
-                            <div class="text-[10px] text-stone-500">Malviya Nagar Patient</div>
-                        </div>
-                        <span class="text-[10px] bg-brand-100 text-brand-800 px-2.5 py-0.5 rounded">Pigmentation Protocol</span>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="bg-white p-8 rounded-2xl border border-brand-200/80 luxury-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 text-xs mb-4">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-stone-700 text-xs sm:text-sm font-light italic leading-relaxed mb-6">
-                            "So refreshingly honest. Dr. explained my laser hair removal process clearly and didn't push extra packages. Calm environment and zero pain."
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-brand-100 flex items-center justify-between">
-                        <div>
-                            <div class="text-xs font-semibold text-brand-900">R. Malhotra</div>
-                            <div class="text-[10px] text-stone-500">Chhatarpur Patient</div>
-                        </div>
-                        <span class="text-[10px] bg-brand-100 text-brand-800 px-2.5 py-0.5 rounded">Laser Hair Removal</span>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="bg-white p-8 rounded-2xl border border-brand-200/80 luxury-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 text-xs mb-4">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-stone-700 text-xs sm:text-sm font-light italic leading-relaxed mb-6">
-                            "My hair shedding was causing so much anxiety. The trichoscopy scan showed exact density changes and after 4 GFC sessions, the density is visibly back."
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-brand-100 flex items-center justify-between">
-                        <div>
-                            <div class="text-xs font-semibold text-brand-900">A. Verma</div>
-                            <div class="text-[10px] text-stone-500">Malviya Nagar Patient</div>
-                        </div>
-                        <span class="text-[10px] bg-brand-100 text-brand-800 px-2.5 py-0.5 rounded">Hair GFC Therapy</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking & Contact Section -->
-    <section id="booking" class="py-20 bg-stonebg border-t border-brand-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-brand-200 luxury-shadow">
+    <!-- Footer Section with Social Handles -->
+    <footer class="bg-brand-900 text-brand-100 pt-16 pb-8 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 
-                <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
-                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-brand-600">Start Your Skin Journey</span>
-                    <h2 class="font-serif-heading text-3xl sm:text-4xl text-brand-900 font-normal">
-                        Book Your Personalised Consultation
-                    </h2>
-                    <p class="text-stone-600 text-xs sm:text-sm font-light">
-                        Select your preferred clinic location and concern below. Our clinic coordinator will reach out to confirm your time slot.
-                    </p>
-                </div>
-
-                <!-- Form -->
-                <form id="consultationForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Location Selection -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-semibold text-brand-900 uppercase tracking-wider">
-                                Choose Clinic Location <span class="text-red-500">*</span>
-                            </label>
-                            <select id="clinicLocation" required class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3.5 text-xs text-brand-900 focus:outline-none focus:border-brand-600">
-                                <option value="" disabled selected>Select Location</option>
-                                <option value="Malviya Nagar">Malviya Nagar Clinic (South Delhi)</option>
-                                <option value="Chhatarpur">Chhatarpur Clinic (South Delhi)</option>
-                                <option value="Gurgaon">Gurgaon (Pre-Registration)</option>
-                            </select>
-                        </div>
-
-                        <!-- Treatment Selection -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-semibold text-brand-900 uppercase tracking-wider">
-                                Primary Area of Concern <span class="text-red-500">*</span>
-                            </label>
-                            <select id="treatmentType" required class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3.5 text-xs text-brand-900 focus:outline-none focus:border-brand-600">
-                                <option value="" disabled selected>Select Concern / Treatment</option>
-                                <option value="Laser Hair Reduction">Laser Hair Reduction</option>
-                                <option value="Acne & Acne Scars">Acne & Acne Scars</option>
-                                <option value="Pigmentation & Melasma">Pigmentation & Melasma</option>
-                                <option value="Hair Fall & Restoration">Hair Fall & Restoration</option>
-                                <option value="Anti-Aging & Rejuvenation">Anti-Aging & Rejuvenation</option>
-                                <option value="Body Sculpting & Toning">Body Sculpting & Toning</option>
-                                <option value="General Skin Consultation">General Skin Consultation</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- Name -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-semibold text-brand-900 uppercase tracking-wider">Full Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="patientName" required placeholder="e.g. Ananya Roy" class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3.5 text-xs text-brand-900 focus:outline-none focus:border-brand-600">
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-semibold text-brand-900 uppercase tracking-wider">Phone Number <span class="text-red-500">*</span></label>
-                            <input type="tel" id="patientPhone" required placeholder="+91 98765 00000" class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3.5 text-xs text-brand-900 focus:outline-none focus:border-brand-600">
-                        </div>
-
-                        <!-- Preferred Date -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-semibold text-brand-900 uppercase tracking-wider">Preferred Date</label>
-                            <input type="date" id="preferredDate" class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3.5 text-xs text-brand-900 focus:outline-none focus:border-brand-600">
-                        </div>
-                    </div>
-
-                    <!-- Additional Notes -->
-                    <div class="space-y-2">
-                        <label class="block text-xs font-semibold text-brand-900 uppercase tracking-wider">Notes or Questions (Optional)</label>
-                        <textarea id="patientNotes" rows="3" placeholder="Describe any specific skin or hair symptoms..." class="w-full bg-stonebg border border-brand-200 rounded-xl px-4 py-3 text-xs text-brand-900 focus:outline-none focus:border-brand-600"></textarea>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="pt-2 text-center">
-                        <button type="submit" class="w-full sm:w-auto bg-brand-900 text-white font-semibold text-xs px-10 py-4 rounded-xl uppercase tracking-widest hover:bg-brand-800 transition-all shadow-md">
-                            Confirm Consultation Booking Request
-                        </button>
-                    </div>
-
-                </form>
-
-                <!-- Confirmation Message Overlay State (hidden by default) -->
-                <div id="bookingConfirmation" class="hidden text-center py-12 space-y-4">
-                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl mx-auto">
-                        <i class="fa-solid fa-circle-check"></i>
-                    </div>
-                    <h3 class="font-serif-heading text-3xl text-brand-900 font-normal">Appointment Request Received</h3>
-                    <p class="text-stone-600 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
-                        Thank you, <span id="confirmName" class="font-semibold"></span>! Our patient coordinator at <span id="confirmLocation" class="font-semibold text-brand-800"></span> will contact you shortly to confirm your doctor consultation.
-                    </p>
-                    <button onclick="resetBookingForm()" class="mt-4 text-xs font-semibold text-brand-700 underline hover:text-brand-900">
-                        Book another appointment
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-brand-900 text-brand-200 pt-16 pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-brand-800">
-                
-                <!-- Brand Info -->
+                <!-- Col 1: Brand Info -->
                 <div class="space-y-4">
-                    <a href="#" class="flex items-center group py-1" aria-label="HEBE Skin, Hair & Laser Clinic">
-                        <img src="https://lh3.googleusercontent.com/d/1NadNPEtyOAVQZ8VLIuHCh2xeiaXC55P5" 
-                             alt="HEBE Skin, Hair & Laser Clinic Logo" 
-                             class="h-10 sm:h-12 w-auto object-contain bg-white/95 p-1.5 rounded-lg shadow-sm"
-                             onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1NadNPEtyOAVQZ8VLIuHCh2xeiaXC55P5';" />
-                    </a>
-                    <p class="text-xs text-brand-300/80 leading-relaxed font-light">
-                        Personalised dermatological and aesthetic care. Combining medical diagnosis with advanced laser platforms.
+                    <h3 class="font-serif-heading text-2xl text-white font-semibold">HEBE</h3>
+                    <p class="text-xs text-brand-300 font-light leading-relaxed">
+                        Skin, Hair & Laser Clinic. Doctor-led dermatological protocols in New Delhi.
                     </p>
+                    <!-- Social Media Links -->
+                    <div class="pt-2">
+                        <span class="text-[10px] uppercase font-semibold text-brand-400 tracking-wider block mb-2">Connect With Us</span>
+                        <div class="flex items-center gap-3">
+                            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 rounded-full bg-brand-800 hover:bg-brand-700 text-brand-200 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-instagram text-base"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="w-9 h-9 rounded-full bg-brand-800 hover:bg-brand-700 text-brand-200 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-facebook-f text-base"></i>
+                            </a>
+                            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" class="w-9 h-9 rounded-full bg-brand-800 hover:bg-brand-700 text-brand-200 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-youtube text-base"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-brand-800 hover:bg-brand-700 text-brand-200 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-linkedin-in text-base"></i>
+                            </a>
+                            <a href="https://wa.me/919953125367" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-9 h-9 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Treatments Quicklinks -->
+                <!-- Col 2: Specialized Treatments -->
                 <div>
-                    <h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Focus Areas</h4>
-                    <ul class="space-y-2.5 text-xs text-brand-300">
-                        <li><a href="#treatments" onclick="filterCategory('laser')" class="hover:text-white transition-colors">Laser Hair Reduction</a></li>
-                        <li><a href="#treatments" onclick="filterCategory('skin')" class="hover:text-white transition-colors">Acne & Acne Scars</a></li>
-                        <li><a href="#treatments" onclick="filterCategory('skin')" class="hover:text-white transition-colors">Pigmentation & Melasma</a></li>
-                        <li><a href="#treatments" onclick="filterCategory('hair')" class="hover:text-white transition-colors">Hair Restoration Therapy</a></li>
-                        <li><a href="#treatments" onclick="filterCategory('body')" class="hover:text-white transition-colors">Anti-Aging & Rejuvenation</a></li>
+                    <h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Our Services</h4>
+                    <ul class="space-y-2 text-xs text-brand-300">
+                        <li><a href="#treatments" onclick="filterCategory('antiaging')" class="hover:text-white transition-colors">Wrinkle & Worry Line Treatment</a></li>
+                        <li><a href="#treatments" onclick="filterCategory('antiaging')" class="hover:text-white transition-colors">HIFU Non-Surgical Facelift</a></li>
+                        <li><a href="#treatments" onclick="filterCategory('facials')" class="hover:text-white transition-colors">Hydra Facial & Carbon Facial</a></li>
+                        <li><a href="#treatments" onclick="filterCategory('facials')" class="hover:text-white transition-colors">Photo Facial (IPL)</a></li>
+                        <li><a href="#treatments" onclick="filterCategory('skin')" class="hover:text-white transition-colors">Chemical Peels & Acne Care</a></li>
+                        <li><a href="#treatments" onclick="filterCategory('laser')" class="hover:text-white transition-colors">Laser Hair Reduction & Hair PRP</a></li>
                     </ul>
                 </div>
 
-                <!-- Clinic Locations -->
+                <!-- Col 3: Clinic Locations -->
                 <div>
-                    <h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Clinics</h4>
-                    <div class="space-y-4 text-xs text-brand-300">
-                        <div>
-                            <span class="font-semibold text-white">Malviya Nagar:</span>
-                            <p class="text-[11px] text-brand-300/80">Main Road, Near Metro Station, New Delhi</p>
-                        </div>
-                        <div>
-                            <span class="font-semibold text-white">Chhatarpur:</span>
-                            <p class="text-[11px] text-brand-300/80">Main Temple Road, Chhatarpur, New Delhi</p>
-                        </div>
-                        <div>
-                            <span class="font-semibold text-brand-400">Gurgaon:</span>
-                            <p class="text-[11px] text-brand-300/60">Golf Course Road (Opening Soon)</p>
-                        </div>
-                    </div>
+                    <h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Clinic Locations</h4>
+                    <ul class="space-y-3 text-xs text-brand-300">
+                        <li>
+                            <strong class="text-brand-100 block">Chattarpur Clinic:</strong>
+                            D41/806, Upper Ground Floor, 100ft Road, near JMD Building, Chattarpur, New Delhi-110074
+                        </li>
+                        <li>
+                            <strong class="text-brand-100 block">Malviya Nagar Clinic:</strong>
+                            90/59 Behind ITI Main Market, Malviya Nagar, Delhi 110017
+                        </li>
+                        <li>
+                            <span class="text-amber-300 font-semibold">Upcoming Centers:</span> Gurgaon & Jaipur
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Contact & Timings -->
+                <!-- Col 4: Contact & Phone -->
                 <div>
                     <h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Direct Contact</h4>
                     <ul class="space-y-3 text-xs text-brand-300">
                         <li class="flex items-center gap-2">
                             <i class="fa-solid fa-phone text-brand-400"></i>
-                            <a href="tel:+919876543210" class="hover:text-white">+91 98765 43210</a>
+                            <a href="tel:+919953125367" class="hover:text-white font-semibold text-brand-100">+91 9953125367</a>
                         </li>
                         <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-envelope text-brand-400"></i>
-                            <a href="mailto:care@hebeskinclinic.com" class="hover:text-white">care@hebeskinclinic.com</a>
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <a href="https://wa.me/919953125367" target="_blank" class="hover:text-white text-emerald-300">WhatsApp (+91 9953125367)</a>
                         </li>
                         <li class="flex items-center gap-2">
                             <i class="fa-solid fa-clock text-brand-400"></i>
@@ -941,20 +1165,32 @@
             </div>
 
             <!-- Bottom Copyright & Disclaimer -->
-            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-brand-400 gap-4">
+            <div class="pt-8 border-t border-brand-800 flex flex-col sm:flex-row justify-between items-center text-[11px] text-brand-400 gap-4">
                 <p>&copy; 2026 Hebe Skin, Hair & Laser Clinic. All rights reserved.</p>
                 <p class="text-center sm:text-right text-[10px] text-brand-400/60">
-                    Medical Disclaimer: Results vary based on skin biology and diagnostic evaluation.
+                    Medical Disclaimer: Individual treatment outcomes depend on personal skin biology and diagnostic assessment.
                 </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+        // Single Universal Menu Toggle Function
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            const icon = document.getElementById('menuToggleIcon');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                if (icon) {
+                    if (menu.classList.contains('hidden')) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    } else {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    }
+                }
+            }
         }
 
         // Category Filter for Treatments
@@ -994,9 +1230,10 @@
 
             if (locationName) {
                 const locationSelect = document.getElementById('clinicLocation');
-                if (locationName.includes('Malviya')) locationSelect.value = 'Malviya Nagar';
-                else if (locationName.includes('Chhatarpur')) locationSelect.value = 'Chhatarpur';
-                else if (locationName.includes('Gurgaon')) locationSelect.value = 'Gurgaon';
+                if (locationSelect) {
+                    if (locationName.includes('Malviya')) locationSelect.value = 'Malviya Nagar';
+                    else if (locationName.includes('Chattarpur')) locationSelect.value = 'Chattarpur';
+                }
             }
         }
 
@@ -1017,7 +1254,7 @@
 
             // Set confirmation details
             document.getElementById('confirmName').textContent = name;
-            document.getElementById('confirmLocation').textContent = location || 'Hebe Clinic';
+            document.getElementById('confirmLocation').textContent = location ? `${location} Clinic` : 'Hebe Clinic';
 
             // Swap view to confirmation message
             document.getElementById('consultationForm').classList.add('hidden');
