@@ -16,6 +16,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+
     <script>
         tailwind.config = {
             theme: {
@@ -1278,9 +1279,38 @@
         // Handle Consultation Form Submission
         function handleFormSubmit(event) {
             event.preventDefault();
-            
+
             const name = document.getElementById('patientName').value;
+            const phone = document.getElementById('patientPhone').value;
             const location = document.getElementById('clinicLocation').value;
+            const treatment = document.getElementById('treatmentType').value;
+            const date = document.getElementById('preferredDate').value;
+            const time = document.getElementById('preferredTime').value;
+
+            // ── EMAIL TRIGGER (Web3Forms — 100% free, no backend) ──
+            // Setup: Go to https://web3forms.com, enter your email, get an Access Key
+            // Replace the placeholder below — that's it!
+
+            const WEB3FORMS_ACCESS_KEY = '68a24ee0-1bdd-42c1-9f44-c527e93b10d1';
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    subject: 'New Booking Request — Hebe Skin Clinic',
+                    from_name: 'Hebe Clinic Website',
+                    name: name,
+                    phone: phone,
+                    location: location || 'Not specified',
+                    treatment: treatment || 'Not specified',
+                    preferred_date: date,
+                    preferred_time: time || 'Not specified',
+                })
+            })
+            .then(res => res.json())
+            .then(data => console.log('Email sent:', data))
+            .catch(err => console.error('Email failed:', err));
 
             // Set confirmation details
             document.getElementById('confirmName').textContent = name;
